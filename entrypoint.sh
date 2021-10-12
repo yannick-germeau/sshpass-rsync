@@ -11,6 +11,7 @@ echo "Starting ${GITHUB_WORKFLOW}:${GITHUB_ACTION}"
 # echo "INPUT_PASS: ${INPUT_PASS}"
 # echo "INPUT_KEY: ${INPUT_KEY}"
 # echo "INPUT_RUN: ${INPUT_RUN}"
+# echo "REMOTE_PATH: ${REMOTE_PATH}"
 
 CMD="${INPUT_RUN/$'\n'/' && '}"
 
@@ -19,7 +20,7 @@ then
     echo "Using password"
     export SSHPASS=$PASS
     #sshpass -e ssh -o StrictHostKeyChecking=no -p $INPUT_PORT $INPUT_USER@$INPUT_HOST "$CMD"
-    rsync -avzr --delete --filter="merge .github/rsync-filter.conf" --rsh="/usr/bin/sshpass -p ${INPUT_PASS} ssh -o StrictHostKeyChecking=no -p ${INPUT_PORT} $INPUT_USER@$INPUT_HOST" / ${{ secrets.PROD_SERVER_PATH }}
+    rsync -avzr --delete --filter="merge .github/rsync-filter.conf" --rsh="/usr/bin/sshpass -p ${INPUT_PASS} ssh -o StrictHostKeyChecking=no -p ${INPUT_PORT} $INPUT_USER@$INPUT_HOST" / $REMOTE_PATH
 
 else # Private key
     echo "Using private key"

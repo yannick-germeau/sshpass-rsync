@@ -13,6 +13,9 @@ inputs:
   pass:
     description: "SSHPASS password"
     required: false
+  remote_path:
+    description: "Remote patch"
+    required: true
   key:
     description: "SSHPASS private key"
     required: false
@@ -34,4 +37,5 @@ runs:
     USER: ${{ inputs.user }}
     PASS: ${{ inputs.pass }}
     KEY: ${{ inputs.key }}
+    REMOTE_PATH: ${{ inputs.remote_path }}
     RUN: ${{ inputs.run }}
