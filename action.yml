@@ -1,4 +1,4 @@
-name: SSHPASS Github Action
+name: SSHPASS Rsync Github Action
 inputs:
   host:
     description: "SSHPASS host"
@@ -22,7 +22,7 @@ inputs:
 
 description: 'SSHPASS Github Action'
 branding:
-  icon: dollar-sign
+  icon: arrow-up-circle
   color: gray-dark
 runs-on: ubuntu-18.04
 runs:
